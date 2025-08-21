@@ -1,4 +1,6 @@
 import {createSlice} from "@reduxjs/toolkit";
+import {changeAvatar} from "../async/asyncTunk.ts";
+
 
 const userSlice = createSlice({
     name: 'user',
@@ -6,15 +8,13 @@ const userSlice = createSlice({
         name: 'Monster',
         avatar: 'https://gravatar.com/avatar/000?d=monsterid'
     },
-    reducers: {
-        changeAvatar: (state, action) => {
-            state.avatar = action.payload || state.avatar
-        },
-        changeName: (state, action) => {
-            state.name = action.payload || state.name
-        }
+    reducers: {},
+    extraReducers:(builder)=> {
+        builder
+            .addCase(changeAvatar.pending,(state) => { state.avatar =  'Pending..'})
+            .addCase(changeAvatar.rejected, (state) =>{ state.avatar= "Failed to fetch quotes"})
+            .addCase(changeAvatar.fulfilled, (state, action) => {state.avatar = action.payload});
     }
 });
 
-export const {changeAvatar, changeName} = userSlice.actions;
 export default userSlice.reducer;
