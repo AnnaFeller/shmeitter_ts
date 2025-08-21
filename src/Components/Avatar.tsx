@@ -1,5 +1,5 @@
-import {changeAvatar, changeName} from "../features/user/userSlice.ts";
 import {useAppDispatch, useAppSelector} from "../features/configoStore/hook.ts";
+import {changeAvatar, changeName} from "../features/async/asyncTunk.ts";
 
 interface AvatarSize {
     size?:string;
@@ -13,12 +13,12 @@ const Avatar = ({size}:AvatarSize) => {
         <img
             onClick={() => {
                 const url = prompt('Enter new avatar url');
-                dispatch(changeAvatar(url));
+               if(url) dispatch(changeAvatar(url));
             }}
             onContextMenu={e => {
                 e.preventDefault();
                 const name = prompt('Enter new name');
-                dispatch(changeName(name));
+                if (name)dispatch(changeName(name));
             }}
             className={`user-avatar ${size ?? ''}`}
             src={avatar}

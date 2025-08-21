@@ -1,12 +1,13 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
+import {type followers, following} from "../utils/constants.ts";
 
 
-type StatsType = "followers" | "following";
+type StatsType = typeof followers | typeof following;
 
-interface ChangeStatsPayload {
-    statsType: StatsType;
-    sum: number;
-}
+// interface ChangeStatsPayload {
+//     statsType: StatsType;
+//     sum: number;
+// }
 
 const statsSlice = createSlice({
     name: 'stats',
@@ -16,7 +17,7 @@ const statsSlice = createSlice({
     },
     reducers: {
         changeStats: {
-            reducer: (state, action: PayloadAction<ChangeStatsPayload>) => {
+            reducer: (state, action: PayloadAction<{statsType: StatsType, sum:number }>) => {
                 const res = state[action.payload.statsType] + action.payload.sum;
                 state[action.payload.statsType] = res >= 0 ? res : 0;
             },
