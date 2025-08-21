@@ -1,4 +1,4 @@
-// export enum StatsType {
-//     FOLLOWERS = "followers",
-//     FOLLOWING = "following",
-// }
+export enum StatsType {
+    FOLLOWERS = "followers",
+    FOLLOWING = "following",
+}
