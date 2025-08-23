@@ -1,8 +1,8 @@
 import {createSlice, type PayloadAction} from "@reduxjs/toolkit";
-import {type followers, following} from "../utils/constants.ts";
+import {FOLLOWERS,  FOLLOWING} from "../utils/constants.ts";
 
 
-type StatsType = typeof followers | typeof following;
+type StatsType = typeof FOLLOWERS | typeof FOLLOWING;
 
 // interface ChangeStatsPayload {
 //     statsType: StatsType;

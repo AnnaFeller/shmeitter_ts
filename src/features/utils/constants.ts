@@ -1,2 +1,2 @@
-export const following = 'following';
-export const followers = 'followers';
+export const FOLLOWING = 'following';
+export const FOLLOWERS = 'followers';
